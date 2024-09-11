@@ -60,7 +60,7 @@ func Digest(chal *Challenge, o Options) (*Credentials, error) {
 	}
 	// we re-use the same hash.Hash
 	var h hash.Hash
-	switch cred.Algorithm {
+	switch strings.ToUpper(cred.Algorithm) {
 	case "", "MD5":
 		h = md5.New()
 	case "SHA-256":
