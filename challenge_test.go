@@ -2,6 +2,7 @@ package digest
 
 import (
 	"errors"
+	"fmt"
 	"net/http"
 	"strconv"
 	"testing"
@@ -9,13 +10,23 @@ import (
 	"gotest.tools/v3/assert"
 )
 
+func TestName(t *testing.T) {
+	chalengeStr := `Digest  realm="asterisk",nonce="1726016274/381c86aa149ff6ec8eb72e704239926b",opaque="1622622838de7e4b",algorithm=md5,qop="auth"`
+	challenge, err := ParseChallenge(chalengeStr)
+	if err != nil {
+		fmt.Println(err.Error())
+		return
+	}
+	fmt.Println(challenge)
+}
+
 func TestChallenge(t *testing.T) {
 	tests := []struct {
 		input     string
 		challenge *Challenge
 	}{
 		{
-			input: `Digest realm="AXIS_ACCC8EB3494E", nonce="PNHWZB6nBQA=316099a140230c2db387fc75ee1c8ae838a750d8", stale=true, algorithm=MD5, qop="auth"`,
+			input: `Digest  realm="AXIS_ACCC8EB3494E", nonce="PNHWZB6nBQA=316099a140230c2db387fc75ee1c8ae838a750d8", stale=true, algorithm=MD5, qop="auth"`,
 			challenge: &Challenge{
 				Realm:     "AXIS_ACCC8EB3494E",
 				Nonce:     "PNHWZB6nBQA=316099a140230c2db387fc75ee1c8ae838a750d8",
@@ -25,7 +36,7 @@ func TestChallenge(t *testing.T) {
 			},
 		},
 		{
-			input: `Digest realm="AXIS_ACCC8EB3494E", nonce="PNHWZB6nBQA=316099a140230c2db387fc75ee1c8ae838a750d8", algorithm=MD5-sess, qop="auth"`,
+			input: `Digest  realm="AXIS_ACCC8EB3494E", nonce="PNHWZB6nBQA=316099a140230c2db387fc75ee1c8ae838a750d8", algorithm=MD5-sess, qop="auth"`,
 			challenge: &Challenge{
 				Realm:     "AXIS_ACCC8EB3494E",
 				Nonce:     "PNHWZB6nBQA=316099a140230c2db387fc75ee1c8ae838a750d8",

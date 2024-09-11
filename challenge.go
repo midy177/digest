@@ -5,7 +5,7 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/icholy/digest/internal/param"
+	"github.com/midy177/digest/internal/param"
 )
 
 // Challenge is a challenge sent in the WWW-Authenticate header
@@ -38,6 +38,8 @@ func ParseChallenge(s string) (*Challenge, error) {
 	if !ok {
 		return nil, errors.New("digest: invalid challenge prefix")
 	}
+	// 去除行首可能出现的空格
+	s = strings.TrimLeft(s, " ")
 	pp, err := param.Parse(s)
 	if err != nil {
 		return nil, err

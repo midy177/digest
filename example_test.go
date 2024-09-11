@@ -3,7 +3,7 @@ package digest_test
 import (
 	"net/http"
 
-	"github.com/icholy/digest"
+	"github.com/midy177/digest"
 )
 
 func ExampleTransport() {

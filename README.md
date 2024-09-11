@@ -1,6 +1,6 @@
 # HTTP Digest Access Authentication
 
-[![go.dev reference](https://img.shields.io/badge/go.dev-reference-007d9c?logo=go&logoColor=white&style=flat-square)](https://pkg.go.dev/github.com/icholy/digest)
+[![go.dev reference](https://img.shields.io/badge/go.dev-reference-007d9c?logo=go&logoColor=white&style=flat-square)](https://pkg.go.dev/github.com/midy177/digest)
 
 > This package provides a http.RoundTripper implementation which re-uses digest challenges
 
@@ -10,7 +10,7 @@ package main
 import (
 	"net/http"
 
-	"github.com/icholy/digest"
+	"github.com/midy177/digest"
 )
 
 func main() {
@@ -39,7 +39,7 @@ import (
 	"net/http"
 	"net/http/cookiejar"
 
-	"github.com/icholy/digest"
+	"github.com/midy177/digest"
 )
 
 func main() {
@@ -67,7 +67,7 @@ package main
 import (
 	"net/http"
 
-	"github.com/icholy/digest"
+	"github.com/midy177/digest"
 )
 
 func main() {
@@ -101,7 +101,7 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/icholy/digest"
+	"github.com/midy177/digest"
 )
 
 func main() {

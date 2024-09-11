@@ -6,7 +6,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/icholy/digest/internal/param"
+	"github.com/midy177/digest/internal/param"
 )
 
 // Credentials is a parsed version of the Authorization header
@@ -132,7 +132,7 @@ func (c *Credentials) String() string {
 		})
 	}
 	// The RFC does not specify an order, but some implementations expect the response to be at the end.
-	// See: https://github.com/icholy/digest/issues/8
+	// See: https://github.com/midy177/digest/issues/8
 	pp = append(pp, param.Param{
 		Key:   "response",
 		Value: c.Response,
